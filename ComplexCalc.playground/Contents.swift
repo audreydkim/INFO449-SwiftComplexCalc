@@ -28,6 +28,57 @@ print("Welcome back to the UW Calculator")
 //: IMPORTANT: If any tests are commented out, you will be graded a zero (0)! You should never be in the habit of eliminating tests to make the code pass.
 //:
 class Calculator {
+    func add(lhs num1: Int, rhs num2: Int) -> Int {
+        return num1+num2
+    }
+    func add(_ nums: [Int]) -> Int {
+        var total: Int = 0
+        
+        // what if we get an empty array
+        for i in 0...(nums.count - 1) {
+            total += nums[i]
+        }
+        return total
+    }
+    func add(lhs num1: (Int, Int), rhs num2: (Int, Int)) -> (Int, Int) {
+        return (num1.0 + num2.0, num1.1 + num2.1);
+    }
+//    func add(lhs num1: ["x": Int, "y": Int], rhs num1: ["x": Int, "y": Int]) -> ["x": Int, "y": Int] {
+//        return (0, 0);
+//    }
+    
+    func subtract(lhs num1: Int, rhs num2: Int) -> Int {
+        return num1 - num2;
+    }
+    func subtract(lhs num1: (Int, Int), rhs num2: (Int, Int)) -> (Int, Int) {
+        return (num1.0 - num2.0, num1.1 - num2.1);
+    }
+    
+    func multiply(lhs num1: Int, rhs num2: Int) -> Int {
+        return num1*num2;
+    }
+    func multiply(_ nums: [Int]) -> Int {
+        var total: Int = 1;
+        
+        // what if we get an empty array
+        for i in 0...(nums.count - 1) {
+            total *= nums[i]
+        }
+        return total;
+    }
+    
+    func divide(lhs num1: Int, rhs num2: Int) -> Int {
+        return num1/num2;
+    }
+    
+    func count(_ nums: [Int]) -> Int {
+        return nums.count;
+    }
+    
+    func avg(_ nums: [Int]) -> Int {
+        return add(nums) / nums.count;
+    }
+    
 }
 
 //: Don't change the name of this object (`calc`); it's used in all the tests.
@@ -83,5 +134,7 @@ calc.add(lhs: p3, rhs: p4) == (-4, 4)
 
 let pd1 = ["x": 5, "y": 5]
 let pd2 = ["x": -4, "y": 4]
+
 calc.add(lhs: pd1, rhs: pd2) == ["x": 1, "y": 9]
 calc.subtract(lhs: pd1, rhs: pd2) == ["x": 9, "y": 1]
+
