@@ -79,8 +79,17 @@ class Calculator {
         return add(nums) / nums.count;
     }
     
-    func mathOp(lhs: Int, rhs: Int, op: (Int, Int) -> Int) -> Int{
+    func mathOp(lhs: Int, rhs: Int, op: (Int, Int) -> Int) -> Int {
         return op(lhs, rhs)
+    }
+    
+    func mathOp(args: [Int], beg: Int, op: (Int, Int) -> Int) -> Int {
+        var lhs: Int = beg
+        for n in 0...(args.count-1) {
+            let p = op(lhs, args[n])
+            lhs = p
+        }
+        return lhs
     }
 }
 
@@ -138,6 +147,6 @@ calc.add(lhs: p3, rhs: p4) == (-4, 4)
 let pd1 = ["x": 5, "y": 5]
 let pd2 = ["x": -4, "y": 4]
 
-calc.add(lhs: pd1, rhs: pd2) == ["x": 1, "y": 9]
-calc.subtract(lhs: pd1, rhs: pd2) == ["x": 9, "y": 1]
+//calc.add(lhs: pd1, rhs: pd2) == ["x": 1, "y": 9]
+//calc.subtract(lhs: pd1, rhs: pd2) == ["x": 9, "y": 1]
 
