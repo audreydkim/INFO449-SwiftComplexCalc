@@ -43,15 +43,28 @@ class Calculator {
     func add(lhs num1: (Int, Int), rhs num2: (Int, Int)) -> (Int, Int) {
         return (num1.0 + num2.0, num1.1 + num2.1);
     }
-//    func add(lhs num1: ["x": Int, "y": Int], rhs num1: ["x": Int, "y": Int]) -> ["x": Int, "y": Int] {
-//        return (0, 0);
-//    }
+    func add(lhs num1: [String: Int], rhs num2: [String: Int]) -> [String: Int] {
+        let x1 = num1["x"] ?? 0 // you need to do this ?? 0 because you need to have a plan b incase
+        // your dictionary doesn't have the key you're looking for
+        let y1 = num1["y"] ?? 0
+        let x2 = num2["x"] ?? 0
+        let y2 = num2["y"] ?? 0
+        return ["x": x1 + x2, "y": y1 + y2];
+    }
     
     func subtract(lhs num1: Int, rhs num2: Int) -> Int {
         return num1 - num2;
     }
     func subtract(lhs num1: (Int, Int), rhs num2: (Int, Int)) -> (Int, Int) {
         return (num1.0 - num2.0, num1.1 - num2.1);
+    }
+    func subtract(lhs num1: [String: Int], rhs num2: [String: Int]) -> [String: Int] {
+        let x1 = num1["x"] ?? 0 // you need to do this ?? 0 because you need to have a plan b incase
+        // your dictionary doesn't have the key you're looking for
+        let y1 = num1["y"] ?? 0
+        let x2 = num2["x"] ?? 0
+        let y2 = num2["y"] ?? 0
+        return ["x": x1 - x2, "y": y1 - y2];
     }
     
     func multiply(lhs num1: Int, rhs num2: Int) -> Int {
@@ -147,6 +160,6 @@ calc.add(lhs: p3, rhs: p4) == (-4, 4)
 let pd1 = ["x": 5, "y": 5]
 let pd2 = ["x": -4, "y": 4]
 
-//calc.add(lhs: pd1, rhs: pd2) == ["x": 1, "y": 9]
-//calc.subtract(lhs: pd1, rhs: pd2) == ["x": 9, "y": 1]
+calc.add(lhs: pd1, rhs: pd2) == ["x": 1, "y": 9]
+calc.subtract(lhs: pd1, rhs: pd2) == ["x": 9, "y": 1]
 
